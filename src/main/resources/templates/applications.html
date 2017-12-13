@@ -1,0 +1,131 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>CAST AIP to Highlight</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+
+<link rel="stylesheet" type="text/css"
+	href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+</head>
+<body class="texture animated" style="padding: 0; margin: 0;">
+	<div style="opacity: 1; margin-left: 50px;">
+		<h1>AIP to Highlight</h1>
+
+		<div class="col-md-6">
+			<p>
+			<div>
+				<table
+					class="fancytree-colorize-hover fancytree-container fancytree-ext-table">
+					<colgroup>
+						<col width="200px" />
+						<col width="300px" />
+					</colgroup>
+					<tr>
+						<td>
+							<form action="#" th:action="@{/apps}" method="get">
+								Version: <select name="version" id="dropOperator"
+									onchange="this.form.submit()">
+									<option th:each="version : ${versionList}"
+										th:value="${version}" th:text="${version}"
+										th:selected="${#httpServletRequest.getParameter('version')} == ${version} ? true : false" />
+								</select>
+							</form>
+						</td>
+						<td>
+							<form action="#" th:action="@{/apps}" method="get">
+								Source Found:<select id="dropOperator"
+									onchange="this.form.submit()">
+									<option value="">All</option>
+									<option value="true">Yes</option>
+									<option value="false">No</option>
+								</select> <input name="version" type="hidden"
+									th:value="${#httpServletRequest.getParameter('version')}" />
+							</form>
+						</td>
+					</tr>
+				</table>
+			</div>
+			</p>
+			<p>
+			<div class="panel">
+				<div class="col-md-10">
+					<form action="#" th:action="@{/bulkAction}" th:object="${appls}"
+						method="post">
+						<input type="hidden" name="version"
+							th:value="${#httpServletRequest.getParameter('version')}" /> <input
+							type="submit" name="checked" value="Analyze"
+							class="btn btn-xs btn-primary" />
+						<!-- input type="submit" name="all" value="Analyze All" class="btn btn-xs btn-primary" /-->
+						<div class="panel-body"
+							style="padding: 0; height: 540px; overflow-y: scroll;">
+							<table id="appListTbl"
+								 class="table table-dark">
+								<colgroup>
+									<col width="50px" />
+									<col width="200px" />
+									<col width="*" />
+									<col width="300px" />
+								</colgroup>
+								<tr
+									class="fancytree-active fancytree-expanded fancytree-folder fancytree-has-children fancytree-lastsib fancytree-exp-el fancytree-ico-ef">
+									<th class="text-center"><span class="fancytree-node"
+										style="margin-left: 0px;"><span class="fancytree-title"
+											title="undefined">&nbsp;</span></span></th>
+									<th class="text-center">Name</th>
+									<th class="text-center">Version</th>
+									<th class="text-center">Source</th>
+									<th class="text-center">Action</th>
+								</tr>
+								<tbody class="panel-body">
+									<tr th:each="sb, stat : ${appls.applList}">
+										<td class=" select-checkbox">
+											<div th:if="${sb.highlightFound} == 'Yes'">
+												<input type="checkbox"
+													th:field="*{applList[__${stat.index}__].selected}" /> <input
+													type="hidden"
+													th:field="*{applList[__${stat.index}__].aipApp.name}" /> <input
+													type="hidden"
+													th:field="*{applList[__${stat.index}__].sourceFolder}" />
+												<input type="hidden"
+													th:field="*{applList[__${stat.index}__].aipApp.adgVersion}" />
+												<input type="hidden"
+													th:field="*{applList[__${stat.index}__].highlightFound}" />
+											</div>
+										</td>
+										<td th:text="${sb.aipApp.name}" />
+										<td class="text-center" th:text="${sb.aipApp.adgVersion}" />
+										<td class="text-center" th:text="${sb.sourceFolder}" />
+										<td class="text-center">
+											<div th:switch="${sb.highlightFound}">
+												<span th:case="'Yes'"> <a
+													th:href="@{'/analyze?applName=' + ${sb.aipApp.name} + '&amp;version=' + ${sb.aipApp.adgVersion} + '&amp;source=' + ${sb.sourceFolder} + '&amp;adgVersion=' + ${sb.aipApp.adgVersion}}">Analyze</a>
+												</span> <span th:case="'No'"> <a
+													th:href="@{'/add?applName=' + ${sb.aipApp.name} + '&amp;version=' + ${sb.aipApp.adgVersion}}">New</a>
+												</span>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</form>
+				</div>
+			</div>
+			</p>
+		</div>
+		<div class="col-md-6">
+		<div id="resultsBlock"></div>
+		</div>
+
+
+
+	</div>
+
+	<script type="text/javascript" src="webjars/jquery/2.2.4/jquery.min.js"></script>
+
+	<script type="text/javascript" src="js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+</head>
+
+<body>
+	<div th:fragment="resultsList" id="results-block" class="panel">
+		<h3>Analysis Progress</h3>
+		<div class="panel-body" style="height: 540px; overflow-y: scroll;">
+			<table class="table table-dark">
+				<thead>
+					<tr>
+						<th scope="col">Application</th>
+						<th scope="col">ADG Version</th>
+						<th scope="col">Step</th>
+						<th scope="col">Status</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="as : ${applStatus}">
+						<td th:text="${as.applName}" class="col-md-2" />
+						<td th:text="${as.adgVersion}" class="col-md-1" />
+						<td th:text="${as.step}" class="col-md-2" />
+						<td th:text="${as.status}" class="col-md-2" />
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+</html>

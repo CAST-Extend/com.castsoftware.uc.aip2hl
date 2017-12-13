@@ -1,0 +1,33 @@
+AED:
+  url: http://demoserver:8090/CAST_AED/rest/
+  userName: cast
+  password: cast
+
+AAD:
+  url: http://demoserver:8090/CAST-AAD/rest/
+  userName: cast
+  password: cast
+
+highlight:
+  url: https://rpa.casthighlight.com
+  userName: s.ramesh@castsoftware.com  
+  password: Qwerty11
+  defaultDomain: 1111
+  allApplDomain: 1697
+  allApplDomainName: All
+  javaBinFolder: C:/Program Files/Java/jre1.8.0_131/bin
+  jar: C:/highlight/HighlightAutomation.jar
+  resultsFolder: C:/highlight/ScanResults
+  perlFolder: C:/highlight/perl
+  proxyHost:  
+  proxyPort: 
+ 
+cast:datasource:
+  url: jdbc:postgresql://demotest:2280/postgres
+  username: operator
+  password: CastAIP
+  poolsize: 30
+  driver: org.postgresql.Driver
+ 
+  
+

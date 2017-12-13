@@ -1,0 +1,27 @@
+AED:
+  url: http://demoserver:8090/CAST_AED/resta
+  userName: cast
+  password: cast
+
+AAD:
+  url: http://demoserver:8090/CAST-AAD/resta
+  userName: cast
+  password: cast
+
+spring:
+  datasource: 
+    driver-class-name: jdbc:postgresql://demoserver:2280/postgres
+    url: jdbc:postgresql://demoserver:2280/postgresa
+    username: operator
+    password: CastAIP
+#    platform: postgres
+ 
+hibernate:hbm2ddl:auto: none   
+
+cast:datasource:
+  url: jdbc:postgresql://demoserver:2280/postgres
+  username: operator
+  password: CastAIP
+  poolsize: 30
+  driver: org.postgresql.Driver
+  
