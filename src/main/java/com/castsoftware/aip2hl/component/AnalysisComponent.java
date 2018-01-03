@@ -44,7 +44,8 @@ public class AnalysisComponent implements DisposableBean, Runnable {
 	public void run() {
 		while (runBackgroundAnalysis) {
 			try {
-				for (ProcessDetail pd : applAnalysisList) {
+				for (int ii=applAnalysisList.size()-1;ii>=0;ii--) {
+					ProcessDetail pd = applAnalysisList.get(ii);
 					if (pd.getStatus().equals("Queue")) {
 						runAnalysis(pd);
 					}
@@ -62,8 +63,20 @@ public class AnalysisComponent implements DisposableBean, Runnable {
 	}
 
 	public void add(ProcessDetail pd) {
-		pd.setStatus("Queue");
-		applAnalysisList.add(pd);
+		boolean addAppl=true;
+		for (ProcessDetail p: applAnalysisList)
+		{
+			if (p.equals(pd) && (p.getStatus().equals("Running") || p.getStatus().equals("Queue") ))
+			{
+				addAppl=false;
+			} 
+		}
+		if (addAppl==true)
+		{
+			pd.setStatus("Queue");
+			applAnalysisList.add(0,pd);	
+		}
+	
 	}
 
 	public List<ProcessDetail> getApplAnalysisList() {
