@@ -17,6 +17,22 @@ public class ProcessDetail {
 		this.status = "Queue";
 	}
 	
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof ProcessDetail)
+		{
+			ProcessDetail pd = (ProcessDetail)obj;
+			
+			if (this.applName.equals(pd.getApplName()) &&
+				this.adgVersion.equals(pd.getAdgVersion()))	
+				return true;
+			else 
+				return false;
+		} else {
+			return false;
+		}
+	}
+
 	public String getApplName() {
 		return applName;
 	}
