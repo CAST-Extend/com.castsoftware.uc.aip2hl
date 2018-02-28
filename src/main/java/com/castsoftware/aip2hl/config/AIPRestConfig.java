@@ -9,26 +9,26 @@ import org.springframework.web.client.RestTemplate;
 
 @Configuration
 public class AIPRestConfig {
-	@Autowired private AEDConfig aedConfig;
+//	@Autowired private AEDConfig aedConfig;
 	@Autowired private AADConfig aadConfig;
 	
 	private RestTemplate aedRestTemplate;
 	private RestTemplate aadRestTemplate;
 
-	@Bean
-	public RestTemplate aedRestTemplate(RestTemplateBuilder builder) {
-		aedRestTemplate = builder.build();
-		aedRestTemplate.getInterceptors().add(new BasicAuthorizationInterceptor(aedConfig.getUserName(), aedConfig.getPassword()));
-		return aedRestTemplate;
-	}
+//	@Bean
+//	public RestTemplate aedRestTemplate(RestTemplateBuilder builder) {
+//		aedRestTemplate = builder.build();
+//		aedRestTemplate.getInterceptors().add(new BasicAuthorizationInterceptor(aedConfig.getUserName(), aedConfig.getPassword()));
+//		return aedRestTemplate;
+//	}
 	public RestTemplate getAEDRestTemplate()
 	{
 		return aedRestTemplate;
 	}
-	public String getAEDBaseURL()
-	{
-		return aedConfig.getUrl();
-	}
+//	public String getAEDBaseURL()
+//	{
+//		return aedConfig.getUrl();
+//	}
 
 	@Bean
 	public RestTemplate aadRestTemplate(RestTemplateBuilder builder) {

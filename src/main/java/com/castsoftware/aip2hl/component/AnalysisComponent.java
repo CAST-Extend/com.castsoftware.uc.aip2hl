@@ -18,7 +18,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 import com.castsoftware.aip2hl.config.HLRestConfig;
-import com.castsoftware.aip2hl.controller.GreetingController;
+import com.castsoftware.aip2hl.controller.MainController;
 import com.castsoftware.aip2hl.model.ApplStatusDTO;
 import com.castsoftware.aip2hl.model.ProcessDetail;
 import com.castsoftware.aip2hl.model.hl.HLApplication;
@@ -74,6 +74,7 @@ public class AnalysisComponent implements DisposableBean, Runnable {
 		if (addAppl==true)
 		{
 			pd.setStatus("Queue");
+			pd.setId(applAnalysisList.size()+1);
 			applAnalysisList.add(0,pd);	
 		}
 	

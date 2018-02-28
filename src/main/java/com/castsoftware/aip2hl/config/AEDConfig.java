@@ -9,7 +9,7 @@ import org.springframework.http.client.support.BasicAuthorizationInterceptor;
 import org.springframework.web.client.RestTemplate;
 
 @Configuration
-@ConfigurationProperties(prefix = "AED")
+//@ConfigurationProperties(prefix = "AED")
 public class AEDConfig {
 	private String url;
 	private String userName;

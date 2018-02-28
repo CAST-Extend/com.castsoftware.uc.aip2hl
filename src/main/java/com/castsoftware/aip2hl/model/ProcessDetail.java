@@ -1,11 +1,12 @@
 package com.castsoftware.aip2hl.model;
 
 public class ProcessDetail {
-	String applName;
-	ProcessBuilder pb;
-	String status;
-	String step;
-	String adgVersion;
+	private String applName;
+	private ProcessBuilder pb;
+	private String status;
+	private String step;
+	private String adgVersion;
+	private int id;
 
 	public ProcessDetail() {}
 	
@@ -65,4 +66,14 @@ public class ProcessDetail {
 	public void setAdgVersion(String adgVersion) {
 		this.adgVersion = adgVersion;
 	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	
 }
