@@ -1,12 +1,12 @@
 AAD:
   url: http://demoserver:8090/CAST-AAD/rest/
-  userName: cast
-  password: cast
+  userName: *****
+  password: *****
 
 highlight:
   url: https://rpa.casthighlight.com
-  userName: s.ramesh@castsoftware.com  
-  password: Qwerty11
+  userName: *****  
+  password: *****
   defaultDomain: 1111
   allApplDomain: 1697
   allApplDomainName: All
