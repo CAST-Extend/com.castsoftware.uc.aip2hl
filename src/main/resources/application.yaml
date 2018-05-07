@@ -19,8 +19,8 @@ highlight:
  
 cast:datasource:
   url: jdbc:postgresql://demotest:2280/postgres
-  username: operator
-  password: CastAIP
+  username: *****
+  password: *****
   poolsize: 30
   driver: org.postgresql.Driver
  

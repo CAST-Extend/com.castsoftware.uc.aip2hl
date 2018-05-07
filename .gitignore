@@ -1,5 +1,11 @@
-/target/
-/temp.dat
-/application.txt
-/.settings
+/target/classes/
+/target/generated-sources/
+/target/lib/
+/target/maven-archiver/
+/target/maven-status/
+/target/test-classes/
+org.eclipse.*
+com.castsoftware.uc.aip2hl.*
+highlight*.jar
+
 
